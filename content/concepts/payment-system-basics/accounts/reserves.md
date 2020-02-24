@@ -41,6 +41,11 @@ When an address holds less XRP than its current reserve requirement, it cannot s
 
 **Tip:** When an address is below the reserve requirement, it can send new [OfferCreate transactions][] to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new [trust lines](ripplestate.html), or [Offer nodes in the ledger](offer.html), so they can only execute trades that consume Offers that are already in the order books.
 
+## Going Below the Reserve Requirement in case of Trust Lines
+
+Note that although the reserve increases with every item an account owns, in the case of trust lines, the reserve is only *enforced* if the user owns more than two items.
+
+This happens to allow the exchange of currencies, which needs trust lines. This makes it easy for a gateway to fund the accounts of its users without fear of being tricked. Without this logic, a gateway that wanted to have a new user use its services, would have to give that user enough XRP to cover not only the account reserve but the incremental reserve for the trust line as well. A person with no intention of using the gateway could use the extra XRP for their own purposes.
 
 ## Changing the Reserve Requirements
 
